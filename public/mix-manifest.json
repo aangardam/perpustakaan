@@ -1,0 +1,9 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/master/member.js": "/js/master/member.js",
+    "/js/master/buku.js": "/js/master/buku.js",
+    "/js/master/penerbit.js": "/js/master/penerbit.js",
+    "/js/master/kategori.js": "/js/master/kategori.js",
+    "/js/master/denda.js": "/js/master/denda.js"
+}

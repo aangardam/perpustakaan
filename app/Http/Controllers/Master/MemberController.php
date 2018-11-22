@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Master;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Master\Member;
+use Illuminate\Support\Facades\DB;
 class MemberController extends Controller
 {
     /**
@@ -30,7 +31,35 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('Master.member.create');
+        // expired
+        $tgl1 = date('Y-m-d');
+        $expired = date('Y-m-d', strtotime('+1 year', strtotime($tgl1)));
+
+        // no_anggota
+        $date = date('Ymd');
+        $month = date('m');
+        $year = date('Y');
+        $member = DB::table('members')
+                        ->whereYear('created_at', '=', $year)
+                        ->whereMonth('created_at', '=', $month)
+                        ->count();
+        $no = $member + 1;
+        if ($member == 0) {
+            $nomor = $date."001";
+        }elseif($member < 10 ){
+            $nomor = $date."00".$no;
+        }elseif($member < 100 ){
+            $nomor = $date."0".$no;
+        }else{
+            $nomor = $date.$no;
+        }
+        // $member = Member::cout();
+        // return $nomor;
+        return view('Master.member.create')->with([
+            'nomor' => $nomor,
+            'expired' => $expired,
+            'title' => 'Tambah Anggota'
+        ]);
     }
 
     /**
@@ -50,7 +79,7 @@ class MemberController extends Controller
             $data['foto'] = $dest.$foto;
         }
         $data = staff::create($data);
-        return redirect('Master/Member/create')->with('success','Data berhasil ditambah');
+        return redirect('Master/Anggota/create')->with('success','Data berhasil ditambah');
     }
 
     /**
@@ -122,7 +151,7 @@ class MemberController extends Controller
                 
             ));
         }
-        return redirect('Master/Member/'.$id.'/edit')->with('success', 'Data berhasil di ubah');
+        return redirect('Master/Anggota/'.$id.'/edit')->with('success', 'Data berhasil di ubah');
     }
 
     /**

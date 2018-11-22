@@ -42,9 +42,9 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/Buku/create','BukuController@create')->name('Master/Buku/create');
             Route::post('/Buku/Import','BukuController@Import')->name('Master/Buku/Import');
             // Member
-            Route::resource('/Member', 'MemberController');
-            Route::get('/Member','MemberController@index')->name('Master/Member');
-            Route::get('/Member/create','MemberController@create')->name('Master/Member/create');
+            Route::resource('/Anggota', 'MemberController');
+            Route::get('/Anggota','MemberController@index')->name('Master/Anggota');
+            Route::get('/Anggota/create','MemberController@create')->name('Master/Anggota/create');
             
             
             

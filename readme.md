@@ -2,7 +2,7 @@
 Project ini menggunakan Laravel 5.7 dengan database mysql
 
 # Environment
--nodejs v6
+- nodejs v6
 - PHP >= 7.2
 
 # Mulai Development Project

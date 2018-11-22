@@ -11,6 +11,9 @@ Project ini menggunakan Laravel 5.7 dengan database mysql
 - cd perpustakaan/
 - npm install
 - composer install --prefer-dist
+- Membuat database di mysql
+- Edit .env sesuai database yang telah di buat di mysql
+- php artisan migrate --seed
 - php artisan clear:cache
 - php artisan config:clear
 - npm run watch

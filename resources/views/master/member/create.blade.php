@@ -9,6 +9,7 @@
 		</div>
 		<div class="ibox-content">
 			{{ csrf_field() }}
+			<input type="hidden" name="expired" class="form-control" placeholder="Kategori Buku" required="" readonly="" value="{{ $expired }}"/>
 			@if (session('success'))
 			<div class="alert alert-success" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -27,50 +28,86 @@
 			@endif
 			<div class="form-group">
 				<div class="row">
-					<label for="name" class="col-md-3">Nomor Anggota
+					<label for="name" class="col-md-2">Nomor Anggota
 						<small class="text-danger">*</small>
 					</label>
-					<div class="col-md-9">
+					<div class="col-md-4">
 						<input type="text" name="nomor" class="form-control" placeholder="Kategori Buku" required="" readonly="" value="{{ $nomor}}"/>
 						@if ($errors->has('nomor'))
 						<i class="text-danger">{{ $errors->first('nomor')  }}</i>
 						@endif
 					</div>
-				</div>
-            </div>
-            <div class="form-group">
-				<div class="row">
-					<label for="name" class="col-md-3">Nama Anggota
+
+					<label for="name" class="col-md-2">Nama Anggota
 						<small class="text-danger">*</small>
 					</label>
-					<div class="col-md-9">
-						<input type="text" name="name" class="form-control" placeholder="Nama" required="" />
+					<div class="col-md-4">
+						<input type="text" name="name" class="form-control" placeholder="Nama Anggota Baru" required="" />
 						@if ($errors->has('name'))
 						<i class="text-danger">{{ $errors->first('name')  }}</i>
 						@endif
 					</div>
 				</div>
-            </div>
-            <div class="form-group">
+			</div>
+			<div class="form-group">
 				<div class="row">
-					<label for="name" class="col-md-3">Email Anggota
+					<label for="name" class="col-md-2">Email Anggota
 					</label>
-					<div class="col-md-9">
-						<input type="text" name="email" class="form-control" placeholder="email" required="" />
+					<div class="col-md-4">
+						<input type="text" name="email" class="form-control" placeholder="Email Anggota Baru" />
 						@if ($errors->has('email'))
 						<i class="text-danger">{{ $errors->first('email')  }}</i>
 						@endif
 					</div>
-				</div>
-            </div>
-            <div class="form-group">
-				<div class="row">
-					<label for="name" class="col-md-3">No Telp/HP
+
+					<label for="name" class="col-md-2">No Telp/HP
 					</label>
-					<div class="col-md-9">
-						<input type="text" name="phone" class="form-control" placeholder="No Telp/HP" required="" />
+					<div class="col-md-4">
+						<input type="text" name="phone" class="form-control" placeholder="No Telp/HP" />
 						@if ($errors->has('phone'))
 						<i class="text-danger">{{ $errors->first('phone')  }}</i>
+						@endif
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<label for="name" class="col-md-2">Tempat Lahir
+					</label>
+					<div class="col-md-4">
+						<input type="text" name="tmpt_lahir" class="form-control" placeholder="tmpt_lahir Anggota Baru" />
+						@if ($errors->has('tmpt_lahir'))
+						<i class="text-danger">{{ $errors->first('tmpt_lahir')  }}</i>
+						@endif
+					</div>
+
+					<label for="name" class="col-md-2">Tanggal Lahir
+					</label>
+					<div class="col-md-4" id="data_1">
+						<input type="text" name="tgl_lahir" id="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" value="2010-01-01"/>
+						@if ($errors->has('tgl_lahir'))
+						<i class="text-danger">{{ $errors->first('tgl_lahir')  }}</i>
+						@endif
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<label for="name" class="col-md-2">Alamat Anggota
+					</label>
+					<div class="col-md-4">
+						<textarea name="address" id="address" class="form-control"></textarea>
+						@if ($errors->has('address'))
+						<i class="text-danger">{{ $errors->first('address')  }}</i>
+						@endif
+					</div>
+
+					<label for="name" class="col-md-2">Foto
+					</label>
+					<div class="col-md-4">
+						<input type="file" name="foto" class="form-control" placeholder="No Telp/HP" />
+						@if ($errors->has('foto'))
+						<i class="text-danger">{{ $errors->first('foto')  }}</i>
 						@endif
 					</div>
 				</div>

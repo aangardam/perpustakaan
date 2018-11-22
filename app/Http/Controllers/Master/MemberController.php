@@ -58,7 +58,8 @@ class MemberController extends Controller
         return view('Master.member.create')->with([
             'nomor' => $nomor,
             'expired' => $expired,
-            'title' => 'Tambah Anggota'
+            'title' => 'Tambah Anggota',
+            'js' => $this->js
         ]);
     }
 
@@ -78,7 +79,7 @@ class MemberController extends Controller
             $request->file('foto')->move($dest,$foto);
             $data['foto'] = $dest.$foto;
         }
-        $data = staff::create($data);
+        $data = Member::create($data);
         return redirect('Master/Anggota/create')->with('success','Data berhasil ditambah');
     }
 

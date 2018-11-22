@@ -31,6 +31,11 @@
 	{{-- select2 --}}
 	<link href="{{asset('css/plugins/select2/select2.min.css')}}" rel="stylesheet">
 
+	{{-- date picker --}}
+	<link href="{{asset('css/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet">
+	<link href="{{asset('css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
+	{{-- <link href="{{asset('css/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet"> --}}
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 </head>
 <body>
@@ -207,12 +212,14 @@
 
 {{-- Select2 --}}
 <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
-
+<!-- Data picker -->
+<script src="{{asset('js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <!-- Toastr -->
 <script src="{{asset('js/plugins/toastr/toastr.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 @if (isset($js))
     <script src="{{ mix('js/' . $js) }}"></script>
  @endif
+
 </body>
 </html>

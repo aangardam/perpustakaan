@@ -73,7 +73,7 @@
 
                                         <a class="btn btn-sm btn-danger" onclick="remove({{$value->id}})"><i class="glyphicon glyphicon-trash"></i></a> --}}
                                         <a href="{{ url('Master/Anggota/'.$value->id.'/edit') }}" class="btn btn-sm btn-danger"> 
-                                            <i class="glyphicon glyphicon-eye"></i>
+                                            <i class="glyphicon glyphicon-eye-open"></i>
                                         </a>
                                     </td>
                                 </tr>  

@@ -10,10 +10,6 @@ $(document).ready(function(){
     };
 
     table.init();
-
-    $('#file').change(function() {
-        $('#target').submit();
-      });
 });
 
 window.remove = function (id) {

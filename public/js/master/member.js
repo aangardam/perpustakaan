@@ -90,10 +90,6 @@ $(document).ready(function () {
     };
 
     table.init();
-
-    $('#file').change(function () {
-        $('#target').submit();
-    });
 });
 
 window.remove = function (id) {
@@ -156,7 +152,13 @@ $(document).ready(function () {
 /***/ 60:
 /***/ (function(module, exports) {
 
-$(document).ready(function () {});
+$(document).ready(function () {
+    $("input[name=tgl_lahir]").datepicker({
+        autoclose: true,
+        // format: 'dd-mm-yyyy'
+        format: 'yyy-mm-dd'
+    });
+});
 
 /***/ })
 

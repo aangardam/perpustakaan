@@ -47,10 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/Anggota/create','MemberController@create')->name('Master/Anggota/create');
             Route::get('/Anggota/{id}/show','MemberController@show')->name('Master/Anggota/show');
             Route::get('/Anggota/{id}/active','MemberController@active')->name('Master/Anggota/active');
-            
-            
-            
-            
+            Route::get('/Anggota/Print/{id}','MemberController@print')->name('Master/Anggota/print');
         });
     });
 });

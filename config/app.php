@@ -159,6 +159,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        
 
         /*
          * Package Service Providers...
@@ -177,6 +178,8 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         // excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        // PDF
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -231,6 +234,8 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         // Excel
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        // PDF
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

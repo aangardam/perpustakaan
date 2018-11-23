@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Master\Member;
 use Illuminate\Support\Facades\DB;
+use PDF;
+
 class MemberController extends Controller
 {
     /**
@@ -72,9 +74,14 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $pecah = explode('-', $request->tgl_lahir );
+        $tgl = $pecah[0];
+        $bln = $pecah[1];
+        $thn = $pecah[2];
+        $data['tgl_lahir'] = $thn.'-'.$bln.'-'.$tgl;
         if($request->file('foto')){
             $ext = $request->file('foto')->getClientOriginalExtension();
-            $foto = "staff_".$request->input('name').'_'.date("YmdHis").strtolower('.'.$ext);
+            $foto = "member_".$request->input('name').'_'.date("YmdHis").strtolower('.'.$ext);
             $dest = "foto/member/";
             $request->file('foto')->move($dest,$foto);
             $data['foto'] = $dest.$foto;
@@ -128,8 +135,8 @@ class MemberController extends Controller
         // $expired = date('Y-m-d', strtotime('+1 year', strtotime($tgl1)));
         if($request->has('foto')){
             $ext = $request->file('foto')->getClientOriginalExtension();
-            $foto = "staff_".$request->input('name').'_'.date("YmdHis").strtolower('.'.$ext);
-            $dest = "fotos/staff/";
+            $foto = "member_".$request->input('name').'_'.date("YmdHis").strtolower('.'.$ext);
+            $dest = "foto/member/";
             $request->file('foto')->move($dest,$foto);
             $name_foto = $dest.$foto;
 
@@ -180,5 +187,14 @@ class MemberController extends Controller
             'expired' => $expired
         ));
         return redirect('Master/Anggota')->with('success','Anggota berhasil di activkan');
+    }
+
+    public function print($id)
+    {
+       $member = Member::find($id);
+       // return $member;
+       $pdf = PDF::loadView('master.member.pdf', compact('member'));
+       // $pdf->save(storage_path().'_filename.pdf');
+       return $pdf->download('kartu_anggota.pdf');
     }
 }

@@ -124,10 +124,10 @@ var form = {
 
 $(document).ready(function () {
 
-    var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-
-    elems.forEach(function (html) {
-        new Switchery(html);
+    $("input[name=tgl_lahir]").datepicker({
+        autoclose: true,
+        format: 'dd-mm-yyyy'
+        // format: 'yyy-mm-dd'
     });
 
     form.api.scope = {
@@ -155,8 +155,8 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("input[name=tgl_lahir]").datepicker({
         autoclose: true,
-        // format: 'dd-mm-yyyy'
-        format: 'yyy-mm-dd'
+        format: 'dd-mm-yyyy'
+        // format: 'yyy-mm-dd'
     });
 });
 

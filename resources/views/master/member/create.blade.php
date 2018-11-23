@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-<form action="{{ action('Master\MemberController@store')}}" method="post">
+<form action="{{ action('Master\MemberController@store')}}" method="post" enctype="multipart/form-data" >
 	<div class="ibox">
 
 		<div class="ibox-title">
@@ -84,7 +84,8 @@
 					<label for="name" class="col-md-2">Tanggal Lahir
 					</label>
 					<div class="col-md-4" id="data_1">
-						<input type="text" name="tgl_lahir" id="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" value="2010-01-01"/>
+						<!-- <input type="text" name="tgl_lahir" id="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" value="2010-01-01"/> -->
+						<input type="text" name="tgl_lahir" id="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" value="01-01-2010"/>
 						@if ($errors->has('tgl_lahir'))
 						<i class="text-danger">{{ $errors->first('tgl_lahir')  }}</i>
 						@endif

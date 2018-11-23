@@ -56,7 +56,6 @@
 							<span class="clear"> 
 								<span class="block m-t-xs"> <strong class="font-bold">{{auth::user()->name }} <br> {{ auth::user()->email }}</strong> <b class="caret"></b></span>
 							</span>
-								{{-- </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a> --}}
 							<ul class="dropdown-menu animated fadeInRight m-t-xs">
 								<li><a href="profile.html">Profile</a></li>
 								<li><a href="contacts.html">Contacts</a></li>
@@ -72,28 +71,12 @@
 					</li>
 					<li>
 						<a href="{{ url('/home' )}}"><i class="fa fa-home"></i><span class="nav-label"> Home </span> </a>
-
 						<a href="{{ url('/Master' )}}"><i class="fa fa-wrench"></i><span class="nav-label"> Master </span> </a>
-
-						{{-- <a href="#"><i class="fa fa-gear"></i> <span class="nav-label"> Access Control </span> <span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level collapse">
-							<li><a href="index.html"> User </a></li>
-						</ul>
-
-						
-
 						<a href="#"><i class="fa fa-gear"></i> <span class="nav-label"> Transaksi </span> <span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level collapse">
-							<li><a href="index.html"> Peminjaman </a></li>
-							<li><a href="index.html"> Pengembalian </a></li>
+							<li><a href="{{ url('Transaksi/Peminjaman') }}"> Peminjaman </a></li>
+							<li><a href="{{ url('Transaksi/Pengembalian') }}"> Pengembalian </a></li>
 						</ul>
-
-						<a href="#"><i class="fa fa-file"></i> <span class="nav-label"> Laporan </span> <span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level collapse">
-							<li><a href="index.html"> Denda </a></li>
-							<li><a href="index.html"> Peminjaman </a></li>
-							<li><a href="index.html"> Pengembalian </a></li>
-						</ul> --}}
 					</li>
 				</ul>
 

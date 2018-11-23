@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::resource('/Anggota', 'MemberController');
             Route::get('/Anggota','MemberController@index')->name('Master/Anggota');
             Route::get('/Anggota/create','MemberController@create')->name('Master/Anggota/create');
+            Route::get('/Anggota/{id}/show','MemberController@show')->name('Master/Anggota/show');
+            Route::get('/Anggota/{id}/active','MemberController@active')->name('Master/Anggota/active');
             
             
             

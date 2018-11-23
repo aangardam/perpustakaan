@@ -91,7 +91,12 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Member::find($id);
+        return view('master.member.detail')->with([
+            'title' => 'Detail Anggota',
+            'member' => $data
+        ]);
+        
     }
 
     /**
@@ -143,7 +148,6 @@ class MemberController extends Controller
             Member::where('id',$id)->update(array(
                 'name' => $request->name,
                 'nomor' => $request->nomor,
-                'foto' => $name_foto,
                 'address' => $request->address,
                 'email' => $request->email,
                 'phone' => $request->phone,
@@ -164,5 +168,17 @@ class MemberController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function active($id)
+    {
+        $tgl1 = date('Y-m-d');
+        $expired = date('Y-m-d', strtotime('+1 year', strtotime($tgl1)));
+
+        Member::where('id',$id)->update(array(
+            'status' => 'Active',
+            'expired' => $expired
+        ));
+        return redirect('Master/Anggota')->with('success','Anggota berhasil di activkan');
     }
 }

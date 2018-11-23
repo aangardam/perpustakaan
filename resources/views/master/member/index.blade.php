@@ -47,7 +47,7 @@
                                     <th>No Telp</th>
                                     <th>Masa Aktif</th>
                                     <th>Status</th>
-                                    <th></th>
+                                    <th>Detail</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,7 +62,12 @@
                                     <td>{{ $value->email }}</td>
                                     <td>{{ $value->phone }}</td>
                                     <td>{{ $value->expired }}</td>
-                                    <td>{{ $value->status }}</td>
+                                    @if ($value->status == 'Active')
+                                        <td>{{ $value->status }}</td>
+                                    @else
+                                        <a href="{{ url('Master/Anggota/'.$id.'/active') }}"> <td>{{ $value->status }}</td> </a>
+                                    @endif
+                                    
                                     <td>
                                         {{-- <form id="delete-{{$value->id}}"
                                             action="{{ action('Master\MemberController@destroy', ['id' => $value->id]) }}" method="POST"
@@ -72,7 +77,7 @@
                                         </form>
 
                                         <a class="btn btn-sm btn-danger" onclick="remove({{$value->id}})"><i class="glyphicon glyphicon-trash"></i></a> --}}
-                                        <a href="{{ url('Master/Anggota/'.$value->id.'/edit') }}" class="btn btn-sm btn-danger"> 
+                                        <a href="{{ url('Master/Anggota/'.$value->id.'/show') }}" class="btn btn-sm btn-success"> 
                                             <i class="glyphicon glyphicon-eye-open"></i>
                                         </a>
                                     </td>

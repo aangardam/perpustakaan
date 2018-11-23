@@ -3,7 +3,7 @@ Project ini menggunakan Laravel 5.7 dengan database mysql
 
 # Environment
 - nodejs v6
-- PHP >= 7.2
+- PHP >= 7.1
 
 # Mulai Development Project
 - Gunakan command line / cmd / terminal
@@ -19,3 +19,8 @@ Project ini menggunakan Laravel 5.7 dengan database mysql
 - npm run watch
 - buka tab terminal baru
 - php artisan serve
+
+# Detail Login
+- Username : admin@local.local
+- Password : 111
+

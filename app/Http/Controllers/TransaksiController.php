@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Transaksi;
 use App\Models\Master\Buku;
 use App\Models\Master\Anggota;
+use App\Models\Log;
+use Auth;
 
 class TransaksiController extends Controller
 {
@@ -17,6 +19,11 @@ class TransaksiController extends Controller
     private $js = 'transaksi.js';
     public function index()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman transaksi";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $data = Transaksi::all();
         return view('transaksi.index')->with([
             'Title' => 'Transaksi',

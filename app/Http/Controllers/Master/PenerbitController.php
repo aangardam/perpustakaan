@@ -9,6 +9,9 @@ use Excel;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use App\Models\Log;
+use Auth;
+
 class PenerbitController extends Controller
 {
     /**
@@ -19,6 +22,11 @@ class PenerbitController extends Controller
     private $js = 'master/penerbit.js';
     public function index()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman penerbit";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $penerbit = Penerbit::all();
         return view('master.penerbit.index')->with([
             'title' => 'Penerbit',
@@ -34,6 +42,11 @@ class PenerbitController extends Controller
      */
     public function create()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman tambah penerbit";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         return view('master.penerbit.create')->with([
             'title' => 'Tambah Penerbit Buku'
         ]);
@@ -47,6 +60,11 @@ class PenerbitController extends Controller
      */
     public function store(Request $request)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " menambah data penerbit " . $request->input('name');
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $data = $request->all();
         Penerbit::create($data);
         return redirect('/Master/Penerbit/create')->with('success','Data berhasil ditambah');
@@ -71,6 +89,11 @@ class PenerbitController extends Controller
      */
     public function edit($id)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman edit penerbit";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $penerbit = Penerbit::find($id);
         return view('master.penerbit.edit')->with([
             'title' => 'Edit Penerbit Buku',
@@ -87,6 +110,11 @@ class PenerbitController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " mengubah data penerbit " . $request->input('name');
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         Penerbit::where('id',$id)->update(array(
             'name' => $request->input('name'),
             'address' => $request->input('address'),
@@ -105,6 +133,12 @@ class PenerbitController extends Controller
      */
     public function destroy($id)
     {
+        $data = Penerbit::find($id);
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " menghapus data penerbit " . $data->name;
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         Penerbit::find($id)->delete();
         return redirect('/Master/Penerbit')->with('success','Data berhasil dihapus');
     }
@@ -140,6 +174,12 @@ class PenerbitController extends Controller
                 }
                 if(!empty($insert)){
                     // Kategori::create($insert);
+                    $data = Buku::find($id);
+                    $Log['user'] = auth::user()->name;
+                    $Log['message'] = auth::user()->name . " export data penerbit ";
+                    $Log['ip'] = url()->current();
+                    $save = Log::create($Log);
+
                     DB::table('penerbits')->insert($insert);
                     return redirect('Master/Penerbit')->with('success', 'File berhasil di Import');
                 }else{

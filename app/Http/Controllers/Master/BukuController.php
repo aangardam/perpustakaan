@@ -11,6 +11,8 @@ use Excel;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use App\Models\Log;
+use Auth;
 
 class BukuController extends Controller
 {
@@ -23,6 +25,11 @@ class BukuController extends Controller
 
     public function index()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman buku";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $buku = Buku::all();
         return view('Master.buku.index')->with([
             'title' => 'Buku',
@@ -38,6 +45,11 @@ class BukuController extends Controller
      */
     public function create()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman tambah buku";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $kategori = Kategori::all();
         $penerbit = Penerbit::all();
         return view('Master.buku.create')->with([
@@ -56,6 +68,11 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " menambah buku " . $request->input('name');
+        $Log['ip'] = url()->current();
+        Log::create($Log);
+
         $data = $request->all();
         Buku::create($data);
         return redirect('Master/Buku/create')->with('success','Data Berhasil ditambah');
@@ -80,6 +97,11 @@ class BukuController extends Controller
      */
     public function edit($id)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman edit buku";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $data = Buku::find($id);
         $kategori = Kategori::all();
         $penerbit = Penerbit::all();
@@ -101,6 +123,11 @@ class BukuController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " mengubah buku " . $request->input('name');
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         Buku::where('id',$id)->update(array(
             'kode' => $request->input('kode'),
             'name' => $request->input('name'),
@@ -120,6 +147,12 @@ class BukuController extends Controller
      */
     public function destroy($id)
     {
+        $data = Buku::find($id);
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " menghapus buku " . $data->name;
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $data = Buku::find($id)->delete();
         return redirect('Master/Buku')->with('success','Data berhasil dihapus');
     }
@@ -156,6 +189,11 @@ class BukuController extends Controller
                 }
                 if(!empty($insert)){
                     // Kategori::create($insert);
+                    $Log['user'] = auth::user()->name;
+                    $Log['message'] = auth::user()->name . " export data buku";
+                    $Log['ip'] = url()->current();
+                    $save = Log::create($Log);
+
                     DB::table('bukus')->insert($insert);
                     return redirect('Master/Buku')->with('success', 'File berhasil di Import');
                 }else{

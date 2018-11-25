@@ -9,6 +9,8 @@ use Excel;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use App\Models\Log;
+use Auth;
 class KategoriController extends Controller
 {
     /**
@@ -20,6 +22,11 @@ class KategoriController extends Controller
     private $js = 'master/kategori.js';
     public function index()
     {
+        // dd(url()->current());
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman kategori";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
         $kategori = Kategori::all();
         return view('master.kategori.index')->with([
             'title' => 'Kategori',
@@ -35,6 +42,11 @@ class KategoriController extends Controller
      */
     public function create()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman tambah kategori";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         return view('master.kategori.create')->with([
             'title' => 'Tambah Kategori Buku'
         ]);
@@ -48,6 +60,11 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " menambah kategori " . $request->input('name');
+        $Log['ip'] = url()->current();
+        Log::create($Log);
+
         $data = $request->all();
         Kategori::create($data);
         return redirect('Master/Kategori/create')->with('success','Barhasil tambah data');
@@ -72,6 +89,11 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman edit kategori";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $data = Kategori::find($id);
         return view('master.kategori.edit')->with([
             'title' => 'Edit Kategori',
@@ -88,6 +110,11 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " mengubah kategori " . $request->input('name');
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         Kategori::where('id',$id)->update(array(
             'name' => $request->input('name')
         ));
@@ -102,6 +129,17 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
+        // $Log['user'] = auth::user()->name;
+        // $Log['message'] = auth::user()->name . " menghapus kategori " . $id;
+        // $Log['ip'] = url()->current();
+        // $save = Log::create($Log);
+
+        $data = Kategori::find($id);
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " menghapus kategori " . $data->name;
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         Kategori::find($id)->delete();
         return redirect('Master/Kategori')->with('success','Data berhasil dihapus');
     }
@@ -133,6 +171,11 @@ class KategoriController extends Controller
                 }
                 if(!empty($insert)){
                     // Kategori::create($insert);
+                    $Log['user'] = auth::user()->name;
+                    $Log['message'] = auth::user()->name . " export data kategori";
+                    $Log['ip'] = url()->current();
+                    $save = Log::create($Log);
+
                     DB::table('kategoris')->insert($insert);
                     return redirect('Master/Kategori')->with('success', 'File berhasil di Import');
                 }else{

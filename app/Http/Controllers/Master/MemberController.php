@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Master\Member;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use App\Models\Log;
+use Auth;
 
 class MemberController extends Controller
 {
@@ -18,6 +20,11 @@ class MemberController extends Controller
     private $js = 'master/member.js';
     public function index()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman member";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $member = Member::all();
         return view('Master.member.index')->with([
             'title' => 'Anggota',
@@ -33,6 +40,10 @@ class MemberController extends Controller
      */
     public function create()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman tambah member";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
         // expired
         $tgl1 = date('Y-m-d');
         $expired = date('Y-m-d', strtotime('+1 year', strtotime($tgl1)));
@@ -73,6 +84,11 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " menambah data member " . $request->input('name');
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $data = $request->all();
         $pecah = explode('-', $request->tgl_lahir );
         $tgl = $pecah[0];
@@ -99,6 +115,13 @@ class MemberController extends Controller
     public function show($id)
     {
         $data = Member::find($id);
+
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " melihat detail member " . $data->name ;
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
+        // $data = Member::find($id);
         return view('master.member.detail')->with([
             'title' => 'Detail Anggota',
             'member' => $data
@@ -114,6 +137,7 @@ class MemberController extends Controller
      */
     public function edit($id)
     {
+        
         $member = Member::find($id);
         return view('Master.member.edit')->with([
             'title' => 'Edit Member',
@@ -131,6 +155,11 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " mengubah data member " . $request->input('name') ;
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         // $tgl1 = date('Y-m-d');
         // $expired = date('Y-m-d', strtotime('+1 year', strtotime($tgl1)));
         if($request->has('foto')){
@@ -179,6 +208,12 @@ class MemberController extends Controller
 
     public function active($id)
     {
+        $data = Member::find($id);
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " meng-activkan member " . $data->name ;
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $tgl1 = date('Y-m-d');
         $expired = date('Y-m-d', strtotime('+1 year', strtotime($tgl1)));
 
@@ -191,7 +226,14 @@ class MemberController extends Controller
 
     public function print($id)
     {
-       $member = Member::find($id);
+        $member = Member::find($id);
+
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " export pdf data " . $member->name ;
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
+        
        // return $member;
        $pdf = PDF::loadView('master.member.pdf', compact('member'));
        // $pdf->save(storage_path().'_filename.pdf');

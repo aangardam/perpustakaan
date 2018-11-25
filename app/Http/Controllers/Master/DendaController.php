@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Master;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Master\Denda;
+use App\Models\Log;
+use Auth;
+
 class DendaController extends Controller
 {
     /**
@@ -16,6 +19,11 @@ class DendaController extends Controller
 
     public function index()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman denda";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $denda = Denda::all();
         return view('master.denda.index')->with([
             'title' => 'Denda',
@@ -64,6 +72,11 @@ class DendaController extends Controller
      */
     public function edit($id)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman edit denda";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $denda = Denda::find($id);
         return view('master.denda.edit')->with([
             'title' => 'Edit Denda',
@@ -80,6 +93,11 @@ class DendaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " mengubah data denda";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         Denda::where('id',$id)->update(array(
             'price' => $request->input('price'),
             'day' => $request->input('day')

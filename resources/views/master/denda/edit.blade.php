@@ -23,8 +23,17 @@
 				<div class="row">
 					<label for="name" class="col-md-3"> Biaya  <small class="text-danger">*</small></label>
 					<div class="col-md-9">
-						<input type="text" name="price" class="form-control" placeholder="Besarnya biaya denda"
+						<input type="number" name="price" class="form-control" placeholder="Besarnya biaya denda"
 						value="{{ $denda->price }}" required="" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<label for="name" class="col-md-3"> Max. Hari  <small class="text-danger">*</small></label>
+					<div class="col-md-9">
+						<input type="number" name="day" class="form-control" placeholder="Max. Hari"
+						value="{{ $denda->day }}" required="" />
 					</div>
 				</div>
 			</div>

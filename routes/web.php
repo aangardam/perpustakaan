@@ -50,5 +50,11 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/Anggota/Print/{id}','MemberController@print')->name('Master/Anggota/print');
         });
     });
+
+    
+    Route::resource('Transaksi', 'TransaksiController');
+    // data transaksi
+    Route::post('reporting/ajax/data','TransaksiController@data');
+    
 });
 

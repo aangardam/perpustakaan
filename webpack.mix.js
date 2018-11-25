@@ -58,3 +58,11 @@ mix.js(
   ],
   'public/js/master/member.js'
 );
+
+// transaksi
+mix.js(
+  [
+  'resources/js/transaksi/index.js'
+  ],
+  'public/js/transaksi.js'
+);

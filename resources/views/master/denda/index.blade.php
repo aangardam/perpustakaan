@@ -32,6 +32,7 @@
 								<tr>
 									<th>No</th>
 									<th>Biaya Denda</th>
+									<th>Maksimal Hari </th>
 								</tr>
 							</thead>
 							<tbody>
@@ -41,7 +42,8 @@
                                         <td>{{ $item+1 }}</td>
                                         <td>
                                             <a href="{{ url('Master/Denda/'.$value->id.'/edit') }}"> {{ number_format($value->price) }} </a>
-                                        </td>
+										</td>
+										<td> {{ $value->day }} Hari</td>
                                     </tr>  
                                 @endforeach
 							</tfoot>

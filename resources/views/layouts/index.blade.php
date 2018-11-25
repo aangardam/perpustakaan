@@ -17,10 +17,10 @@
 	<link href="{{asset('font-awesome/css/font-awesome.css')}}" rel="stylesheet">
 
 	<!-- Toastr style -->
-	<link href="{{asset('css/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
+	{{-- <link href="{{asset('css/plugins/toastr/toastr.min.css')}}" rel="stylesheet"> --}}
 
 	<!-- Gritter -->
-	<link href="{{asset('js/plugins/gritter/jquery.gritter.css')}}" rel="stylesheet">
+	{{-- <link href="{{asset('js/plugins/gritter/jquery.gritter.css')}}" rel="stylesheet"> --}}
 
 	<link href="{{asset('css/animate.css')}}" rel="stylesheet">
 	<link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -32,7 +32,7 @@
 	<link href="{{asset('css/plugins/select2/select2.min.css')}}" rel="stylesheet">
 
 	{{-- date picker --}}
-	<link href="{{asset('css/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet">
+	{{-- <link href="{{asset('css/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet"> --}}
 	<link href="{{asset('css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
 	{{-- <link href="{{asset('css/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet"> --}}
 
@@ -71,13 +71,20 @@
 					</li>
 					<li>
 						<a href="{{ url('/home' )}}"><i class="fa fa-home"></i><span class="nav-label"> Home </span> </a>
+					</li>
+					<li>
 						<a href="{{ url('/Master' )}}"><i class="fa fa-wrench"></i><span class="nav-label"> Master </span> </a>
+					</li>
+					<li>
+						<a href="{{ url('Transaksi' )}}"><i class="fa fa-gear"></i><span class="nav-label"> Transaksi </span> </a>
+					</li>
+					{{-- <li>
 						<a href="#"><i class="fa fa-gear"></i> <span class="nav-label"> Transaksi </span> <span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level collapse">
 							<li><a href="{{ url('Transaksi/Peminjaman') }}"> Peminjaman </a></li>
 							<li><a href="{{ url('Transaksi/Pengembalian') }}"> Pengembalian </a></li>
 						</ul>
-					</li>
+					</li> --}}
 				</ul>
 
 			</div>
@@ -160,7 +167,7 @@
 <script src="{{asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
 <script src="{{asset('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 
-<!-- Flot -->
+{{-- <!-- Flot -->
 <script src="{{asset('js/plugins/flot/jquery.flot.js')}}"></script>
 <script src="{{asset('js/plugins/flot/jquery.flot.tooltip.min.js')}}"></script>
 <script src="{{asset('js/plugins/flot/jquery.flot.spline.js')}}"></script>
@@ -169,16 +176,16 @@
 
 <!-- Peity -->
 <script src="{{asset('js/plugins/peity/jquery.peity.min.js')}}"></script>
-<script src="{{asset('js/demo/peity-demo.js')}}"></script>
+<script src="{{asset('js/demo/peity-demo.js')}}"></script>--}}
 
 <!-- Custom and plugin javascript -->
 <script src="{{asset('js/inspinia.js')}}"></script>
-<script src="{{asset('js/plugins/pace/pace.min.js')}}"></script>
+<script src="{{asset('js/plugins/pace/pace.min.js')}}"></script> 
 
 <!-- jQuery UI -->
 <script src="{{asset('js/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 
-<!-- GITTER -->
+{{-- <!-- GITTER -->
 <script src="{{asset('js/plugins/gritter/jquery.gritter.min.js')}}"></script>
 
 <!-- Sparkline -->
@@ -188,7 +195,7 @@
 <script src="{{asset('js/demo/sparkline-demo.js')}}"></script>
 
 <!-- ChartJS-->
-<script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script>
+<script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script> --}}
 
 {{-- data table --}}
 <script src="{{asset('js/plugins/dataTables/datatables.min.js')}}"></script>
@@ -198,8 +205,8 @@
 <!-- Data picker -->
 <script src="{{asset('js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <!-- Toastr -->
-<script src="{{asset('js/plugins/toastr/toastr.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+{{-- <script src="{{asset('js/plugins/toastr/toastr.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> --}}
 @if (isset($js))
     <script src="{{ mix('js/' . $js) }}"></script>
  @endif

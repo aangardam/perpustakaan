@@ -16,6 +16,7 @@ class CreateDendasTable extends Migration
         Schema::create('dendas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('price')->default(1000);
+            $table->integer('day')->default(3);
             $table->timestamps();
         });
     }

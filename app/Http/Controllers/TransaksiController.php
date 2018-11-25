@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\Master;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Master\Denda;
-class DendaController extends Controller
+use App\Models\Transaksi;
+use App\Models\Master\Buku;
+use App\Models\Master\Anggota;
+
+class TransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    private $js = 'master/denda.js';
-
+    private $js = 'transaksi.js';
     public function index()
     {
-        $denda = Denda::all();
-        return view('master.denda.index')->with([
-            'title' => 'Denda',
+        $data = Transaksi::all();
+        return view('transaksi.index')->with([
+            'Title' => 'Transaksi',
             'js' => $this->js,
-            'denda' => $denda
+            'data' => $data
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -64,11 +64,7 @@ class DendaController extends Controller
      */
     public function edit($id)
     {
-        $denda = Denda::find($id);
-        return view('master.denda.edit')->with([
-            'title' => 'Edit Denda',
-            'denda' => $denda
-        ]);
+        //
     }
 
     /**
@@ -80,11 +76,7 @@ class DendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Denda::where('id',$id)->update(array(
-            'price' => $request->input('price'),
-            'day' => $request->input('day')
-        ));
-        return redirect('/Master/Denda/'.$id.'/edit')->with('success','Data Berhasil diubah');
+        //
     }
 
     /**

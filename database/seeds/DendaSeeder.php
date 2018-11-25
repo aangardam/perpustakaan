@@ -14,6 +14,7 @@ class DendaSeeder extends Seeder
         Denda::insert([
             [
               'price'  => '1000',
+              'day' => 3
             ],
         ]);
     }

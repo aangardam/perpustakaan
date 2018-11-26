@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     
     Route::resource('Transaksi', 'TransaksiController');
+    Route::get('transaksi/kembali/{id}','TransaksiController@kembali');
     // data transaksi
     Route::post('reporting/ajax/data','TransaksiController@data');
     

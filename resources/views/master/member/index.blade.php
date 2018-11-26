@@ -65,7 +65,7 @@
                                     @if ($value->status == 'Active')
                                         <td>{{ $value->status }}</td>
                                     @else
-                                        <a href="{{ url('Master/Anggota/'.$id.'/active') }}"> <td>{{ $value->status }}</td> </a>
+                                       <td> <a href="{{ url('Master/Anggota/'.$value->id.'/active') }}"> {{ $value->status }}</td> </a>
                                     @endif
                                     
                                     <td>

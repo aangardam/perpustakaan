@@ -116,6 +116,12 @@ $(document).ready(function () {
     //     placeholder: 'Status Buku'
     // });
 
+    $("#idmember").select2({
+        placeholder: 'Pilih Anggota'
+    });
+    $("#idbuku").select2({
+        placeholder: 'Pilih Buku'
+    });
     table = {
         el: $("#table-transaksi"),
         evt: {},

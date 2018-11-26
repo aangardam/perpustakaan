@@ -75,7 +75,7 @@
 					<label for="name" class="col-md-2">Tempat Lahir
 					</label>
 					<div class="col-md-4">
-						<input type="text" name="tmpt_lahir" class="form-control" placeholder="tmpt_lahir Anggota Baru" />
+						<input type="text" name="tmpt_lahir" class="form-control" placeholder="Tempat Anggota Baru" />
 						@if ($errors->has('tmpt_lahir'))
 						<i class="text-danger">{{ $errors->first('tmpt_lahir')  }}</i>
 						@endif

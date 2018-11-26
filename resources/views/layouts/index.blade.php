@@ -133,7 +133,8 @@
                                 <a href="{{ url($segment1.'/'.$segment2) }}"> {{ ucfirst($segment2) }} </a>
                             </li>
 							@endif --}}
-							@if (strtolower($segment2) != '' && strtolower($segment2) != strtolower($title) )
+							
+							@if (strtolower($segment2) != '' && strtolower($segment2) != strtolower($title) && strtolower($segment1) != strtolower("Transaksi") )
                             <li>
                                 <a href="{{ url($segment1.'/'.$segment2) }}"> {{ ucfirst($segment2) }} </a>
                             </li>

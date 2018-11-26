@@ -136,6 +136,10 @@
                                         <a href="{{ url('transaksi/kembali/'.$key->id) }}" class="btn btn-sm btn-success"> 
                                             <i class="fa fa-recycle"></i> Kembali
                                         </a> 
+                                        
+                                        <a href="{{ url('transaksi/hilang/'.$key->id) }}" class="btn btn-sm btn-danger"> 
+                                            <i class="fa fa-remove"></i> Hilang
+                                        </a>
                                         @endif
                                     </td>
                                 </tr>

@@ -66,3 +66,24 @@ mix.js(
   ],
   'public/js/transaksi.js'
 );
+
+mix.js(
+  [
+  'resources/js/laporan/pengembalian.js'
+  ],
+  'public/js/laporan/pengembalian.js'
+);
+
+mix.js(
+  [
+  'resources/js/laporan/peminjaman.js'
+  ],
+  'public/js/laporan/peminjaman.js'
+);
+
+mix.js(
+  [
+  'resources/js/laporan/hilang.js'
+  ],
+  'public/js/laporan/hilang.js'
+);

@@ -158,13 +158,13 @@ class TransaksiController extends Controller
                         ->count();
         $no = $kode + 1;
         if ($kode == 0) {
-            $nomor = "001/pinjam/".$month.'/'.$year;
+            $nomor = "001/kembali/".$month.'/'.$year;
         }elseif($kode < 10 ){
-            $nomor = "00".$no.'/pinjam/'.$month.'/'.$year;
+            $nomor = "00".$no.'/kembali/'.$month.'/'.$year;
         }elseif($kode < 100 ){
-            $nomor = "0".$no.'/pinjam/'.$month.'/'.$year;
+            $nomor = "0".$no.'/kembali/'.$month.'/'.$year;
         }else{
-            $nomor = $no.'/pinjam/'.$month.'/'.$year;
+            $nomor = $no.'/kembali/'.$month.'/'.$year;
         }
         // end
         $data = Transaksi::find($id);
@@ -174,6 +174,42 @@ class TransaksiController extends Controller
         ));
         Transaksi::where('id',$id)->update(array(
             'status' => 'Kembali',
+            'kodekembali'=>$nomor,
+            'denda'=>0
+        ));
+
+        return redirect('Transaksi')->with('sucsess','Buku telah berhasil dikembalikan');
+    }
+
+    public function hilang($id)
+    {
+         // kode Kembali
+        $date = date('Ymd');
+        $month = date('m');
+        $year = date('Y');
+        $kode = DB::table('transaksis')
+                        ->where('status','Hilang')
+                        ->whereYear('created_at', '=', $year)
+                        ->whereMonth('created_at', '=', $month)
+                        ->count();
+        $no = $kode - 1;
+        if ($kode == 0) {
+            $nomor = "001/hilang/".$month.'/'.$year;
+        }elseif($kode < 10 ){
+            $nomor = "00".$no.'/hilang/'.$month.'/'.$year;
+        }elseif($kode < 100 ){
+            $nomor = "0".$no.'/hilang/'.$month.'/'.$year;
+        }else{
+            $nomor = $no.'/hilang/'.$month.'/'.$year;
+        }
+        // end
+        $data = Transaksi::find($id);
+        $buku = Buku::where('id',$data->idbuku)->first();
+        Buku::where('id',$buku->id)->update(array(
+            'stok' => $buku->stok + 1
+        ));
+        Transaksi::where('id',$id)->update(array(
+            'status' => 'Hilang',
             'kodekembali'=>$nomor,
             'denda'=>0
         ));

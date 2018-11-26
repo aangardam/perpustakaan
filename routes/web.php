@@ -51,11 +51,22 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
-    
     Route::resource('Transaksi', 'TransaksiController');
     Route::get('transaksi/kembali/{id}','TransaksiController@kembali');
-    // data transaksi
-    Route::post('reporting/ajax/data','TransaksiController@data');
+    Route::get('transaksi/hilang/{id}','TransaksiController@hilang');
+
+
+    Route::namespace('Laporan')->group(function () {
+        Route::prefix('Laporan')->group(function () {
+            
+            Route::resource('Laporan', 'LaporanController');
+            Route::get('/Peminjaman','LaporanController@Peminjaman')->name('Laporan/Peminjaman');
+            Route::get('/Pengembalian','LaporanController@Pengembalian')->name('Laporan/Pengembalian');
+            Route::get('/Hilang','LaporanController@Hilang')->name('Laporan/Hilang');
+            
+        });
+    });
+
     
 });
 

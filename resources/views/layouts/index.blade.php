@@ -78,13 +78,14 @@
 					<li>
 						<a href="{{ url('Transaksi' )}}"><i class="fa fa-gear"></i><span class="nav-label"> Transaksi </span> </a>
 					</li>
-					{{-- <li>
-						<a href="#"><i class="fa fa-gear"></i> <span class="nav-label"> Transaksi </span> <span class="fa arrow"></span></a>
+					<li>
+						<a href="#"><i class="fa fa-gear"></i> <span class="nav-label"> Laporan </span> <span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level collapse">
-							<li><a href="{{ url('Transaksi/Peminjaman') }}"> Peminjaman </a></li>
-							<li><a href="{{ url('Transaksi/Pengembalian') }}"> Pengembalian </a></li>
+							<li><a href="{{ url('Laporan/Peminjaman') }}"> Peminjaman </a></li>
+							<li><a href="{{ url('Laporan/Pengembalian') }}"> Pengembalian </a></li>
+							<li><a href="{{ url('Laporan/Hilang') }}"> Hilang </a></li>
 						</ul>
-					</li> --}}
+					</li>
 				</ul>
 
 			</div>

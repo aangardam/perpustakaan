@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Master\Member;
 use Illuminate\Support\Facades\DB;
+use App\Models\Log;
 class HomeController extends Controller
 {
     /**
@@ -12,6 +13,7 @@ class HomeController extends Controller
      *
      * @return void
      */
+    private $js = 'log/log.js';
     public function __construct()
     {
         $this->middleware('auth');
@@ -32,6 +34,16 @@ class HomeController extends Controller
         // return $data;
         $title= "Home";
         return view('home',compact('title'));
+    }
+
+    public function log()
+    {
+        $data = Log::all();
+        return view('log.index')->with([
+            'title' => 'Log Activity',
+            'data' => $data,
+            'js' => $this->js
+        ]);
     }
     
 }

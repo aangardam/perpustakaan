@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
+    Route::get('Log','HomeController@log');
+
     
 });
 

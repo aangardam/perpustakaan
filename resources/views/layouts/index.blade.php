@@ -86,6 +86,9 @@
 							<li><a href="{{ url('Laporan/Hilang') }}"> Hilang </a></li>
 						</ul>
 					</li>
+					<li>
+						<a href="{{ url('Log' )}}"><i class="fa fa-gear"></i><span class="nav-label"> Log Activity </span> </a>
+					</li>
 				</ul>
 
 			</div>

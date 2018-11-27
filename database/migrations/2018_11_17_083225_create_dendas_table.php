@@ -17,6 +17,7 @@ class CreateDendasTable extends Migration
             $table->increments('id');
             $table->integer('price')->default(1000);
             $table->integer('day')->default(3);
+            $table->integer('price_new')->default(20000);
             $table->timestamps();
         });
     }

@@ -130,6 +130,20 @@
 					</div>
 				</div>
             </div>
+            <div class="form-group">
+				<div class="row">
+					<label for="name" class="col-md-3">Price Buku
+						<small class="text-danger">*</small>
+					</label>
+					<div class="col-md-9">
+						<input type="number" name="price" class="form-control" placeholder="price Buku"
+						required="" value="{{ $buku->price }}"/>
+						@if ($errors->has('price'))
+						<i class="text-danger">{{ $errors->first('price')  }}</i>
+						@endif
+					</div>
+				</div>
+            </div>
 			
 		</div>
 		<div class="ibox-footer text-right">

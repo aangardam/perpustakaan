@@ -124,20 +124,32 @@
                                           $datetime1 = new DateTime($tanggal);
                                           $datetime2 = new DateTime($key->tgl);
                                           $difference = $datetime1->diff($datetime2);
-                                          $denda = $difference->days * $denda->price;
+                                          $dendas = $difference->days * $denda->price;
                                         ?>
-                                        <td align="right">Rp. {{ number_format($denda) }} </td>
+                                        <td align="right">Rp. {{ number_format($dendas) }} </td>
                                     @else
                                         <td align="right"> {{ $key->denda }} </td>
                                     @endif
 
                                     <td>
                                         @if($key->status == 'Pinjam')
-                                        <a href="{{ url('transaksi/kembali/'.$key->id) }}" class="btn btn-sm btn-success"> 
-                                            <i class="fa fa-recycle"></i> Kembali
-                                        </a> 
+                                            @if($key->tgl <= $tanggal)
+                                                <?php
+                                                  $datetime1 = new DateTime($tanggal);
+                                                  $datetime2 = new DateTime($key->tgl);
+                                                  $difference = $datetime1->diff($datetime2);
+                                                  $dendas = $difference->days * $denda->price;
+                                                ?>
+                                                <a href="{{ url('transaksi/kembali/'.$key->id.'-'.$dendas) }}" class="btn btn-sm btn-success"> 
+                                                    <i class="fa fa-recycle"></i> Kembali
+                                                </a>
+                                            @else
+                                                 <a href="{{ url('transaksi/kembali/'.$key->id.'- 0') }}" class="btn btn-sm btn-success"> 
+                                                    <i class="fa fa-recycle"></i> Kembali
+                                                </a>
+                                            @endif
                                         
-                                        <a href="{{ url('transaksi/hilang/'.$key->id) }}" class="btn btn-sm btn-danger"> 
+                                        <a href="{{ url('transaksi/hilang/'.$key->id.'-'.$key->idbuku) }}" class="btn btn-sm btn-danger"> 
                                             <i class="fa fa-remove"></i> Hilang
                                         </a>
                                         @endif

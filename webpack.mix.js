@@ -87,3 +87,10 @@ mix.js(
   ],
   'public/js/laporan/hilang.js'
 );
+
+mix.js(
+  [
+  'resources/js/log/log.js'
+  ],
+  'public/js/log/log.js'
+);

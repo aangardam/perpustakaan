@@ -100,7 +100,8 @@ class DendaController extends Controller
 
         Denda::where('id',$id)->update(array(
             'price' => $request->input('price'),
-            'day' => $request->input('day')
+            'day' => $request->input('day'),
+            'price_new' => $request->input('price_new')
         ));
         return redirect('/Master/Denda/'.$id.'/edit')->with('success','Data Berhasil diubah');
     }

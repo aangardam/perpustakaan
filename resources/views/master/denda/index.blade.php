@@ -31,8 +31,9 @@
 							<thead>
 								<tr>
 									<th>No</th>
-									<th>Biaya Denda</th>
-									<th>Maksimal Hari </th>
+									<th>Denda Keterlambatan</th>
+									<th>Maksimal Hari Pinjam</th>
+									<th>Biaya Member</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -44,6 +45,7 @@
                                             <a href="{{ url('Master/Denda/'.$value->id.'/edit') }}"> {{ number_format($value->price) }} </a>
 										</td>
 										<td> {{ $value->day }} Hari</td>
+										<td> {{ $value->price_new }} </td>
                                     </tr>  
                                 @endforeach
 							</tfoot>

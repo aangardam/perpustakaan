@@ -7,6 +7,7 @@
     "/js/master/kategori.js": "/js/master/kategori.js",
     "/js/master/denda.js": "/js/master/denda.js",
     "/js/transaksi.js": "/js/transaksi.js",
+    "/js/log/log.js": "/js/log/log.js",
     "/js/laporan/pengembalian.js": "/js/laporan/pengembalian.js",
     "/js/laporan/peminjaman.js": "/js/laporan/peminjaman.js",
     "/js/laporan/hilang.js": "/js/laporan/hilang.js"

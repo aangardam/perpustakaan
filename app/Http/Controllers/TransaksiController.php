@@ -10,6 +10,8 @@ use App\Models\Master\Denda;
 use App\Models\Log;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Keuangan;
+
 class TransaksiController extends Controller
 {
     /**
@@ -148,6 +150,18 @@ class TransaksiController extends Controller
     public function kembali($id)
     {
          // kode Kembali
+        // return $id;
+        $pecah = explode('-', $id);
+        $id = $pecah[0];
+        $bayar = $pecah[1];
+        if ($bayar != 0) {
+            $denda = Denda::all()->first();
+            $keuangan['price'] = $bayar;
+            $keuangan['note'] = 'Denda keterlambatan';
+            $keuangan['iddenda'] = $denda->id;
+
+            $simpan = Keuangan::create($keuangan);
+        }
         $date = date('Ymd');
         $month = date('m');
         $year = date('Y');
@@ -184,6 +198,10 @@ class TransaksiController extends Controller
     public function hilang($id)
     {
          // kode Kembali
+        $pecah = explode('-', $id);
+        $id = $pecah[0];
+        $idbuku = $pecah[1];
+
         $date = date('Ymd');
         $month = date('m');
         $year = date('Y');
@@ -213,6 +231,15 @@ class TransaksiController extends Controller
             'kodekembali'=>$nomor,
             'denda'=>0
         ));
+
+        $buku = Buku::all()->where('id',$idbuku);
+        $denda = Denda::all()->first();
+
+        $keuangan['price'] = $buku->price_new;
+        $keuangan['note'] = 'Denda Buku Hilang';
+        $keuangan['iddenda'] = $denda->id;
+
+        $simpan = Keuangan::create($keuangan);
 
         return redirect('Transaksi')->with('sucsess','Buku telah berhasil dikembalikan');
     }

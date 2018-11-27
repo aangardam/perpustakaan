@@ -25,6 +25,7 @@ class CreateBukusTable extends Migration
 
             $table->string('pengarang')->default('-');
             $table->integer('stok')->default(0);
+            $table->integer('price')->default(0);
 
             $table->softDeletes();
             $table->timestamps();

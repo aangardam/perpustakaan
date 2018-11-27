@@ -47,6 +47,7 @@
                                     <th>Kategori</th>
                                     <th>Penerbit</th>
                                     <th>Stok </th>
+                                    <th> Harga Buku</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -63,6 +64,7 @@
                                     <td>{{ $value->kategori->name }}</td>
                                     <td>{{ $value->penerbit->name }}</td>
                                     <td align="right">{{ number_format($value->stok) }}</td>
+                                     <td align="right">{{ number_format($value->price) }}</td>
                                     <td>
                                         <form id="delete-{{$value->id}}"
                                             action="{{ action('Master\BukuController@destroy', ['id' => $value->id]) }}" method="POST"

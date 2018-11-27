@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use PDF;
 use App\Models\Log;
 use Auth;
+use App\Models\Master\Denda;
+use App\Models\Keuangan;
 
 class MemberController extends Controller
 {
@@ -87,7 +89,7 @@ class MemberController extends Controller
         $Log['user'] = auth::user()->name;
         $Log['message'] = auth::user()->name . " menambah data member " . $request->input('name');
         $Log['ip'] = url()->current();
-        $save = Log::create($Log);
+        // $save = Log::create($Log);
 
         $data = $request->all();
         $pecah = explode('-', $request->tgl_lahir );
@@ -103,6 +105,16 @@ class MemberController extends Controller
             $data['foto'] = $dest.$foto;
         }
         $data = Member::create($data);
+        if ($data) {
+            $denda = Denda::all()->first();
+            $keuangan['price'] = $denda->price_new;
+            $keuangan['note'] = 'Pembuatan Member';
+            $keuangan['iddenda'] = $denda->id;
+
+            $simpan = Keuangan::create($keuangan);
+        }
+       
+
         return redirect('Master/Anggota/create')->with('success','Data berhasil ditambah');
     }
 

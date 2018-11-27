@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Buku extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['kode','name','idkategori','idpenerbit','pengarang','stok'];
+    protected $fillable = ['kode','name','idkategori','idpenerbit','pengarang','stok','price'];
 
     public function kategori(){
         return $this->belongsTo('App\Models\Master\Kategori','idkategori');

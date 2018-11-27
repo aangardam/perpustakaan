@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Laporan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Transaksi;
+use App\Models\Log;
+
 class LaporanController extends Controller
 {
     /**
@@ -20,6 +22,11 @@ class LaporanController extends Controller
 
     public function Peminjaman()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " mengakses halaman Laporan Peminjaman " ;
+        $Log['ip'] = url()->current();
+        Log::create($Log);
+
         $data = Transaksi::all()->where('status','Pinjam');
         
         return view('laporan.peminjaman')->with([
@@ -31,6 +38,11 @@ class LaporanController extends Controller
 
     public function Pengembalian()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " mengakses halaman Laporan Pengembalian " ;
+        $Log['ip'] = url()->current();
+        Log::create($Log);
+
         $data = Transaksi::all()->where('status','Kembali');
         return view('laporan.pengembalian')->with([
             'title' => 'Laporan Buku yang sudah dikembalikan',
@@ -41,6 +53,11 @@ class LaporanController extends Controller
 
     public function Hilang()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " mengakses halaman Laporan buku hilang " ;
+        $Log['ip'] = url()->current();
+        Log::create($Log);
+
         $data = Transaksi::all()->where('status','Hilang');
         return view('laporan.hilang')->with([
             'title' => 'Laporan Buku yang hilang',

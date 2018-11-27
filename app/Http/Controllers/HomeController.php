@@ -30,18 +30,27 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman home";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $date = date('Y-m-d');
         $data = Member::where('expired' , '<=', $date)->update(array(
             'status' => 'expired'
         ));
-        // $data = Member::where('created_at', '>=', date('Y-m-d').' 00:00:00');
-        // return $data;
+        
         $title= "Home";
         return view('home',compact('title'));
     }
 
     public function log()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman log activity";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         $data = Log::all();
         return view('log.index')->with([
             'title' => 'Log Activity',
@@ -52,6 +61,11 @@ class HomeController extends Controller
 
     public function dasboard()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman dasboard";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         // $buku['total'] = Buku::all()->count();
         $buku = DB::table('bukus')
                     ->sum('stok');

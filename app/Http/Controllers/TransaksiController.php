@@ -25,7 +25,7 @@ class TransaksiController extends Controller
         $Log['user'] = auth::user()->name;
         $Log['message'] = auth::user()->name . " Mengakses halaman transaksi";
         $Log['ip'] = url()->current();
-        // $save = Log::create($Log);
+        $save = Log::create($Log);
 
         $data = Transaksi::all();
         $denda = Denda::all()->first();
@@ -44,6 +44,11 @@ class TransaksiController extends Controller
      */
     public function create()
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " Mengakses halaman tambah transaksi";
+        $Log['ip'] = url()->current();
+        $save = Log::create($Log);
+
         // return "create";
         $denda = Denda::all()->first();
         $date = date('Y-m-d');
@@ -91,6 +96,11 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " menambah transaksi ";
+        $Log['ip'] = url()->current();
+        Log::create($Log);
+
         $data = $request->all();
         $data = Transaksi::create($data);
         if ($data) {
@@ -149,7 +159,11 @@ class TransaksiController extends Controller
 
     public function kembali($id)
     {
-         // kode Kembali
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " merubah status buku " ;
+        $Log['ip'] = url()->current();
+        Log::create($Log);
+        // kode Kembali
         // return $id;
         $pecah = explode('-', $id);
         $id = $pecah[0];
@@ -197,7 +211,12 @@ class TransaksiController extends Controller
 
     public function hilang($id)
     {
-         // kode Kembali
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " menambahkan buku ke daftar buku hilang " ;
+        $Log['ip'] = url()->current();
+        Log::create($Log);
+
+        // kode Kembali
         $pecah = explode('-', $id);
         $id = $pecah[0];
         $idbuku = $pecah[1];

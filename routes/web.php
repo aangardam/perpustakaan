@@ -18,6 +18,7 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/dasboard','HomeController@dasboard')->name('dasboard');
     // Mater
     Route::namespace('Master')->group(function () {
         Route::prefix('Master')->group(function () {

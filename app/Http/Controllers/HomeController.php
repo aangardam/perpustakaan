@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Master\Member;
 use Illuminate\Support\Facades\DB;
 use App\Models\Log;
+use App\Models\Master\Buku;
+use App\Models\Transaksi;
+
+
 class HomeController extends Controller
 {
     /**
@@ -43,6 +47,27 @@ class HomeController extends Controller
             'title' => 'Log Activity',
             'data' => $data,
             'js' => $this->js
+        ]);
+    }
+
+    public function dasboard()
+    {
+        // $buku['total'] = Buku::all()->count();
+        $buku = DB::table('bukus')
+                    ->sum('stok');
+        
+        $trans['buku_hilang'] = Transaksi::where('status','Hilang')->count();
+        $trans['buku_pinjam'] = Transaksi::where('status','Pinjam')->count();
+
+        $member['all'] = Member::all()->count();
+        $member['active'] = Member::where('status','active')->count();
+        $member['expired'] = Member::where('status','expired')->count();
+        // return  $member['all'];
+        return view('dasboard')->with([
+            'title' => 'Dasboard',
+            'buku' => $buku,
+            'trans' => $trans,
+            'member' => $member
         ]);
     }
     

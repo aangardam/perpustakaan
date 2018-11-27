@@ -70,7 +70,7 @@
 					</center>
 					</li>
 					<li>
-						<a href="{{ url('/home' )}}"><i class="fa fa-home"></i><span class="nav-label"> Home </span> </a>
+						<a href="{{ url('/dasboard' )}}"><i class="fa fa-tachometer"></i><span class="nav-label"> Dasboard </span> </a>
 					</li>
 					<li>
 						<a href="{{ url('/Master' )}}"><i class="fa fa-wrench"></i><span class="nav-label"> Master </span> </a>

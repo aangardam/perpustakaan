@@ -17,7 +17,7 @@ class CreateAbsensisTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->nullable();
-            $table->integer('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->string('address');
             $table->string('type');
             $table->timestamps();

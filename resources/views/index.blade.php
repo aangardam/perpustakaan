@@ -20,6 +20,14 @@
             <form method="POST" class="appointment-form" id="appointment-form" action="{{ url('submitabsen') }}">
                 {{ csrf_field() }}
                 <h2>Absensi <br> Sistem Informasi Perpustakaan</h2>
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="form-group-1">
                     <input type="text" name="name" id="name" placeholder="Nama" required />
                     <input type="email" name="email" id="email" placeholder="Email" required />

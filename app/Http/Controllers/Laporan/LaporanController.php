@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Transaksi;
 use App\Models\Log;
+use App\Models\Absensi;
+use Auth;
 
 class LaporanController extends Controller
 {
@@ -66,6 +68,20 @@ class LaporanController extends Controller
         ]);
     }
 
+    public function Pengunjung()
+    {
+        $Log['user'] = auth::user()->name;
+        $Log['message'] = auth::user()->name . " mengakses halaman Laporan pengunjung " ;
+        $Log['ip'] = url()->current();
+        Log::create($Log);
+
+        $data = Absensi::all();
+        return view('laporan.pengunjung')->with([
+            'title' => 'Laporan Pengunjung Perpus',
+            'js' => $this->js['hilang'],
+            'data' => $data
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/Peminjaman','LaporanController@Peminjaman')->name('Laporan/Peminjaman');
             Route::get('/Pengembalian','LaporanController@Pengembalian')->name('Laporan/Pengembalian');
             Route::get('/Hilang','LaporanController@Hilang')->name('Laporan/Hilang');
-            
+            Route::get('/Pengunjung','LaporanController@Pengunjung')->name('Laporan/Pengunjung');
         });
     });
 

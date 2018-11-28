@@ -83,7 +83,8 @@
 						<ul class="nav nav-second-level collapse">
 							<li><a href="{{ url('Laporan/Peminjaman') }}"> Peminjaman </a></li>
 							<li><a href="{{ url('Laporan/Pengembalian') }}"> Pengembalian </a></li>
-							<li><a href="{{ url('Laporan/Hilang') }}"> Hilang </a></li>
+							<li><a href="{{ url('Laporan/Hilang') }}"> Buku Hilang </a></li>
+							<li><a href="{{ url('Laporan/Pengunjung') }}"> Pengunjung </a></li>
 						</ul>
 					</li>
 					<li>

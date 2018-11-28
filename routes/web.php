@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// List Buku
+ Route::get('list-buku', 'Master\BukuController@list');
+
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
 Route::group(['middleware' => ['auth']], function () {

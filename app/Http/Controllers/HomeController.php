@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Log;
 use App\Models\Master\Buku;
 use App\Models\Transaksi;
-
+use Auth;
 
 class HomeController extends Controller
 {

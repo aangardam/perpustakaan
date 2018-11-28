@@ -158,11 +158,6 @@
 					</div>
 				</div>
 			</div>
-			{{-- <div class="footer">
-				<div>
-					<strong>Copyright</strong> Aang Ardam &copy; 2018
-				</div>
-			</div> --}}
 		</div>
 		@endif
 	</div>

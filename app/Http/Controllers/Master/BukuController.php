@@ -203,4 +203,15 @@ class BukuController extends Controller
             return redirect('Master/Buku')->with('error', 'Gagal Import File, File Tidak Terbaca');
         }
     }
+
+    public function list()
+    {
+        $data = Buku::all();
+        // return 'asd';
+        return view('master.buku.list')->with([
+            'title' => 'List Buku',
+            'data' => $data,
+            'js' => $this->js
+        ]);
+    }
 }

@@ -248,7 +248,7 @@ class MemberController extends Controller
         
        // return $member;
        $pdf = PDF::loadView('master.member.pdf', compact('member'));
-       // $pdf->save(storage_path().'_filename.pdf');
+       $pdf->save(storage_path().'_filename.pdf');
        return $pdf->download('kartu_anggota.pdf');
     }
 }

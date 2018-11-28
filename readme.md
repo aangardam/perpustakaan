@@ -12,6 +12,7 @@ Project ini menggunakan Laravel 5.7 dengan database mysql
 - npm install
 - composer install --prefer-dist
 - Membuat database di mysql
+- Create file dangan nama .env atau rename file .env.example menjadi .env
 - Edit .env sesuai database yang telah di buat di mysql
 - php artisan migrate --seed
 - php artisan clear:cache

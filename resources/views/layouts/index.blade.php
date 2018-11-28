@@ -54,15 +54,15 @@
 							</span>
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 							<span class="clear"> 
-								<span class="block m-t-xs"> <strong class="font-bold">{{auth::user()->name }} <br> {{ auth::user()->email }}</strong> <b class="caret"></b></span>
+								<span class="block m-t-xs"> <strong class="font-bold">{{auth::user()->name }} <br> {{ auth::user()->email }}</strong> <!-- <b class="caret"></b> --></span>
 							</span>
-							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+							<!-- <ul class="dropdown-menu animated fadeInRight m-t-xs">
 								<li><a href="profile.html">Profile</a></li>
 								<li><a href="contacts.html">Contacts</a></li>
 								<li><a href="mailbox.html">Mailbox</a></li>
 								<li class="divider"></li>
 								<li><a href="login.html">Logout</a></li>
-							</ul>
+							</ul> -->
 						</div>
 						<div class="logo-element">
 							IN+

@@ -9,6 +9,7 @@ use App\Models\Log;
 use App\Models\Master\Buku;
 use App\Models\Transaksi;
 use Auth;
+use App\Models\Absensi;
 
 class HomeController extends Controller
 {
@@ -83,6 +84,13 @@ class HomeController extends Controller
             'trans' => $trans,
             'member' => $member
         ]);
+    }
+
+    public function submitabsen(Request $request)
+    {
+        $data = $request->all();
+        $save = Absensi::create($data);
+        return view('index')->with('success','Terimakasih telah mengisi absensi');
     }
     
 }

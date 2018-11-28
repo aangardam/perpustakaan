@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 // List Buku
- Route::get('list-buku', 'Master\BukuController@list');
-
+Route::get('list-buku', 'Master\BukuController@list');
+Route::post('submitabsen','HomeController@submitabsen');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
 Route::group(['middleware' => ['auth']], function () {

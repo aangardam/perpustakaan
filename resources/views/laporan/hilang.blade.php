@@ -47,13 +47,13 @@
 
                         </table>
                     </div>
-                    <div class="ibox-footer no-overflow">
+                    {{-- <div class="ibox-footer no-overflow">
                         <div class="pull-right">
                             <button class="btn btn-primary" id="export-excel2"><i class="fa fa-file-excel-o"></i> Export
                                 Excel
                             </button> 
                         </div>
-                    </div> 
+                    </div>  --}}
                 </div>
             </div>
         </div>

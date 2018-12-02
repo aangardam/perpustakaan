@@ -8,6 +8,7 @@ use App\Models\Transaksi;
 use App\Models\Log;
 use App\Models\Absensi;
 use Auth;
+use App\Models\Master\Denda;
 
 class LaporanController extends Controller
 {
@@ -30,11 +31,12 @@ class LaporanController extends Controller
         Log::create($Log);
 
         $data = Transaksi::all()->where('status','Pinjam');
-        
+        $denda = Denda::all()->first();
         return view('laporan.peminjaman')->with([
             'title' => 'Laporan Buku yang dipinjam',
             'js' => $this->js['peminjaman'],
-            'data' => $data
+            'data' => $data,
+            'denda' => $denda
         ]);
     }
 
@@ -46,10 +48,12 @@ class LaporanController extends Controller
         Log::create($Log);
 
         $data = Transaksi::all()->where('status','Kembali');
+        $denda = Denda::all()->first();
         return view('laporan.pengembalian')->with([
             'title' => 'Laporan Buku yang sudah dikembalikan',
             'js' => $this->js['pengembalian'],
-            'data' => $data
+            'data' => $data,
+            'denda' => $denda
         ]);
     }
 

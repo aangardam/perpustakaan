@@ -45,7 +45,7 @@
                                             <a href="{{ url('Master/Denda/'.$value->id.'/edit') }}"> {{ number_format($value->price) }} </a>
 										</td>
 										<td> {{ $value->day }} Hari</td>
-										<td> {{ $value->price_new }} </td>
+										<td> {{ number_format($value->price_new) }} </td>
                                     </tr>  
                                 @endforeach
 							</tfoot>
